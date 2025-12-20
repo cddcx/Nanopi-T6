@@ -73,6 +73,16 @@ sed -i 's/procd_set_param stderr 1/procd_set_param stderr 0/g' feeds/packages/ut
 rm -rf feeds/luci/applications/{luci-app-adguardhome,luci-app-alist,luci-app-v2raya,luci-app-microsocks,luci-app-passwall,luci-app-shadowsocks-libev,luci-app-openclash}
 rm -rf feeds/packages/net/{adguardhome,alist,v2raya,microsocks,shadowsocks-libev}
 
+# nanopc-t6
+echo '# nanopc-t6
+CONFIG_TARGET_rockchip=y
+CONFIG_TARGET_rockchip_armv8=y
+CONFIG_TARGET_rockchip_armv8_DEVICE_friendlyarm_nanopc-t6=y
+CONFIG_TARGET_KERNEL_PARTSIZE=64
+# CONFIG_TARGET_ROOTFS_EXT4FS is not set
+CONFIG_TARGET_ROOTFS_PARTSIZE=1024
+' >>  ./.config
+
 # 修改include/target.mk
 #sed -i "s/DEFAULT_PACKAGES.router:=/DEFAULT_PACKAGES.router:=default-settings-chn luci-app-opkg luci-app-firewall /" include/target.mk
 #sed -i 's/luci-app-cpufreq/luci-app-opkg luci-app-homeproxy luci-app-lxc luci-app-nikki luci-app-openclash luci-app-openlist luci-app-udpxy/g' include/target.mk
