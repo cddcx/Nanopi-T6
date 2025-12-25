@@ -6,7 +6,7 @@ on:
     inputs:
       URL:
         description: '选择源码：'
-        default: 'immortalwrt'
+        default: 'openwrt'
         required: true
         type: choice
         options: [ openwrt,  immortalwrt ]
@@ -24,6 +24,20 @@ on:
         required: true
         type: choice
         options: [ r5s.config, t6.config ]
+        
+      diy1_s:
+        description: '自定义diy1'
+        default: 'op-diy1.sh'
+        required: true
+        type: choice
+        options: [ op-diy1.sh, im-diy1.sh ]
+          
+      diy2_s:
+        description: '自定义diy2'
+        default: 'op-diy2.sh'
+        required: true
+        type: choice
+        options: [ op-diy2.sh, im-diy2.sh ]
         
       target:
         description: '选择要生成的机型：'
