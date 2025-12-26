@@ -47,11 +47,6 @@ on:
         options: [ armv8 ]
 
 env:
-  #REPO_URL: https://github.com/immortalwrt/immortalwrt
-  #REPO_BRANCH: openwrt-24.10
- # CONFIG_FILE: configs/r5s.config
-  DIY_P1_SH: diy1.sh
-  DIY_P2_SH: diy2.sh
   FEEDS_CONF: feeds.conf.default
   FILES: files1
   UPLOAD_FIRMWARE: true
@@ -66,6 +61,8 @@ jobs:
       REPO_URL: ${{github.event.inputs.URL}}
       REPO_BRANCH: ${{github.event.inputs.branch}}
       CONFIG_FILE: configs/${{github.event.inputs.config_s}}
+      DIY_P1_SH: diy/${{github.event.inputs.diy1_s}}
+      DIY_P2_SH: diy/${{github.event.inputs.diy2_s}}
       TARGET_DEVICE: ${{github.event.inputs.target}}
 
     steps:
