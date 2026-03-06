@@ -53,16 +53,17 @@ echo "========================="
 # luci-app-nikki和luci-app-momo
 echo "src-git nikki https://github.com/nikkinikki-org/OpenWrt-nikki.git;main" >> "feeds.conf.default"
 echo "src-git momo https://github.com/nikkinikki-org/OpenWrt-momo.git;main" >> "feeds.conf.default"
+echo "src-git rtp2httpd https://github.com/stackia/rtp2httpd.git;main" >> "feeds.conf.default"
 
 # luci-app-daed
 git clone https://github.com/QiuSimons/luci-app-daed package/dae
 
 # luci-app-fancontrol 风扇控制
 #echo "src-git fancontrol https://github.com/rockjake/luci-app-fancontrol.git" >> "feeds.conf.default"
-merge_package main https://github.com/rockjake/luci-app-fancontrol.git package luci-app-fancontrol
-merge_package main https://github.com/rockjake/luci-app-fancontrol.git package fancontrol
-sed -i 's/风扇通用控制小程序/风扇控制/g' package/luci-app-fancontrol/po/zh_Hans/fancontrol.po
-sed -i 's/services/system/g' package/luci-app-fancontrol/root/usr/share/luci/menu.d/luci-app-fancontrol.json
+#merge_package main https://github.com/rockjake/luci-app-fancontrol.git package luci-app-fancontrol
+#merge_package main https://github.com/rockjake/luci-app-fancontrol.git package fancontrol
+#sed -i 's/风扇通用控制小程序/风扇控制/g' package/luci-app-fancontrol/po/zh_Hans/fancontrol.po
+#sed -i 's/services/system/g' package/luci-app-fancontrol/root/usr/share/luci/menu.d/luci-app-fancontrol.json
 
 # luci-app-openclash
 merge_package master https://github.com/vernesong/OpenClash package luci-app-openclash
