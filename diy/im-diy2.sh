@@ -73,16 +73,17 @@ sed -i 's/procd_set_param stderr 1/procd_set_param stderr 0/g' feeds/packages/ut
 rm -rf feeds/luci/applications/{luci-app-adguardhome,luci-app-alist,luci-app-v2raya,luci-app-microsocks,luci-app-passwall,luci-app-shadowsocks-libev,luci-app-openclash}
 rm -rf feeds/packages/net/{adguardhome,alist,v2raya,microsocks,shadowsocks-libev}
 
-# nanopc-t6
-echo '# nanopc-t6
-CONFIG_TARGET_rockchip=y
-CONFIG_TARGET_rockchip_armv8=y
-CONFIG_TARGET_rockchip_armv8_DEVICE_friendlyarm_nanopc-t6=y
-CONFIG_TARGET_KERNEL_PARTSIZE=64
-# CONFIG_TARGET_ROOTFS_EXT4FS is not set
-CONFIG_TARGET_ROOTFS_PARTSIZE=1024
+## 修改target.mk
+sed -i 's/dnsmasq/dnsmasq-full/g' include/target.mk
+sed -i "s/kmod-nft-offload/kmod-nft-offload kmod-nft-tproxy/" include/target.mk
+#sed -i "s/odhcp6c/ipv6-helper/" include/target.mk
+sed -i "s/DEFAULT_PACKAGES.router:=/DEFAULT_PACKAGES.router:=default-settings-chn luci-app-firewall /" include/target.mk
 
-# 启用 eBPF 支持
+## 修改target/linux/rockchip/Makefile
+sed -i 's/DEFAULT_PACKAGES += /DEFAULT_PACKAGES += luci-app-momo luci-app-nikki luci-app-rtp2httpd /g' target/linux/rockchip/Makefile
+
+# nanopc-t6
+echo '# 启用 eBPF 支持
 CONFIG_DEVEL=y
 CONFIG_KERNEL_DEBUG_INFO=y
 CONFIG_KERNEL_DEBUG_INFO_REDUCED=n
