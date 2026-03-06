@@ -1,4 +1,4 @@
-name: Nanopi T6
+name: rockchip_armv8
 
 on:
   repository_dispatch:
