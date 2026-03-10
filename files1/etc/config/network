@@ -25,6 +25,7 @@ config interface 'lan'
 	list ipaddr '192.168.3.3/24'
 	option multipath 'off'
 	list dns '192.168.3.1'
+    option gateway '192.168.3.1'
 
 config device
 	option name 'eth1'
