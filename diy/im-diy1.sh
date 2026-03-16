@@ -51,7 +51,7 @@ echo "========================="
 #merge_package main https://github.com/xiaorouji/openwrt-passwall package luci-app-passwall
 
 # luci-app-nikki和luci-app-momo
-echo "src-git nikki https://github.com/nikkinikki-org/OpenWrt-nikki.git;main" >> "feeds.conf.default"
+merge_package main https://github.com/nikkinikki-org/OpenWrt-nikki package luci-app-nikki nikki
 echo "src-git momo https://github.com/nikkinikki-org/OpenWrt-momo.git;main" >> "feeds.conf.default"
 echo "src-git rtp2httpd https://github.com/stackia/rtp2httpd.git;main" >> "feeds.conf.default"
 
