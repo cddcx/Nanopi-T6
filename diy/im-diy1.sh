@@ -54,6 +54,7 @@ echo "========================="
 merge_package main https://github.com/nikkinikki-org/OpenWrt-nikki package luci-app-nikki nikki
 
 # luci-app-daed
+git clone https://github.com/sbwml/package_kernel_vmlinux-btf package/kernel/vmlinux-btf
 merge_package v5 https://github.com/sbwml/openwrt_helloworld package/dae daed luci-app-daed
 
 # luci-app-fancontrol 风扇控制
