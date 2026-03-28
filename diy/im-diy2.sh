@@ -77,7 +77,7 @@ rm -rf feeds/packages/net/{adguardhome,alist,daed,v2raya,microsocks,shadowsocks-
 #sed -i 's/dnsmasq/dnsmasq-full/g' include/target.mk
 sed -i "s/kmod-nft-offload/kmod-nft-offload kmod-nft-tproxy/" include/target.mk
 #sed -i "s/odhcp6c/ipv6-helper/" include/target.mk
-sed -i "s/DEFAULT_PACKAGES.router:=/DEFAULT_PACKAGES.router:=default-settings-chn luci-app-firewall /" include/target.mk
+sed -i "s/DEFAULT_PACKAGES.router:=/DEFAULT_PACKAGES.router:=default-settings-chn vmlinux-btf luci-app-firewall /" include/target.mk
 
 ## 修改target/linux/rockchip/Makefile
 sed -i 's/DEFAULT_PACKAGES += /DEFAULT_PACKAGES += luci-app-dockerman luci-app-nikki /g' target/linux/rockchip/Makefile
