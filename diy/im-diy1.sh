@@ -51,7 +51,7 @@ echo "========================="
 #merge_package main https://github.com/xiaorouji/openwrt-passwall package luci-app-passwall
 
 # luci-app-nikki和luci-app-momo
-#merge_package main https://github.com/nikkinikki-org/OpenWrt-nikki package luci-app-nikki nikki
+#git clone https://github.com/nikkinikki-org/OpenWrt-nikki package/OpenWrt-nikki
 
 # luci-app-daed
 git clone https://github.com/QiuSimons/vmlinux-btf package/vmlinux-btf
