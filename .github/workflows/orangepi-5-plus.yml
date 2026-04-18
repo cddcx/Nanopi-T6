@@ -6,7 +6,7 @@ on:
     inputs:
       URL:
         description: '选择源码：'
-        default: 'immortalwrt'
+        default: 'openwrt'
         required: true
         type: choice
         options: [ immortalwrt ]
@@ -16,11 +16,11 @@ on:
         default: 'openwrt-25.12'
         required: true
         type: choice
-        options: [ master, openwrt-23.05, openwrt-24.10, openwrt-25.12 ]
+        options: [ main, master, openwrt-23.05, openwrt-24.10, openwrt-25.12 ]
         
       config_s:
         description: '选择config配置文件'
-        default: 'orangepi-5-plus.config'
+        default: 'r76s.config'
         required: true
         type: choice
         options: [ orangepi-5-plus.config ]
@@ -34,7 +34,7 @@ on:
           
       diy2_s:
         description: '自定义diy2'
-        default: 'im-diy2.sh'
+        default: 'op-diy2.sh'
         required: true
         type: choice
         options: [ im-diy2.sh ]
@@ -70,15 +70,18 @@ jobs:
       uses: actions/checkout@main
 
     - name: 释放磁盘空间
-      uses: smallprogram/maximize-build-space@master
+      uses: jlumbroso/free-disk-space@main
       with:
-        swap-size-mb: 1024
-        temp-reserve-mb: 4608
-        root-reserve-mb: 3584
-        remove-dotnet: "true"
-        remove-android: "true"
-        remove-haskell: "true"
-        remove-codeql: "true"
+        # this might remove tools that are actually needed,
+        # if set to "true" but frees about 6 GB
+        tool-cache: true
+        # all of these default to true, but feel free to set to
+        # "false" if necessary for your workflow
+        android: true
+        dotnet: true
+        haskell: true
+        large-packages: true
+        swap-storage: true
         
     - name: 安装编译环境
       env:
@@ -116,7 +119,7 @@ jobs:
         git clone $REPO_URL -b ${{env.REPO_BRANCH}} openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
-    - name: 加载diy1.sh
+    - name: 加载diy.sh
       run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
         chmod +x $DIY_P1_SH
@@ -129,7 +132,7 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
-    - name: 加载diy2.sh
+    - name: 加载自定义配置
       run: |
         [ -e $FILES ] && mv $FILES openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
