@@ -110,6 +110,7 @@ CONFIG_PACKAGE_kmod-xdp-sockets-diag=y
 
 # 修改target/linux/x86/Makefile
 #sed -i 's/autocore/autocore/g' target/linux/armsr/Makefil
+./scripts/feeds install -a
 
 echo "========================="
 echo " DIY2 配置完成……"
