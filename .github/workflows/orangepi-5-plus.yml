@@ -33,7 +33,7 @@ on:
         options: [ im-diy1.sh ]
           
       diy2_s:
-        description: '自定义diy2'
+        description: '自定义diy2(master分支才有6.18)'
         default: 'op-diy2.sh'
         required: true
         type: choice
